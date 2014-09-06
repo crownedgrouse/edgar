@@ -1,0 +1,9 @@
+PROJECT = $(notdir $(PWD))
+ERLC_OPTS = +debug_info +warn_export_all +warn_export_vars +warn_shadow_vars +warn_obsolete_guard
+CT_SUITES = edgar
+
+include erlang.mk
+
+clean:: 
+	-@find . -type f -name \*~ -delete
+

@@ -1,0 +1,22 @@
+@author Eric Pailleau <edgar@crownedgrouse.com>
+@copyright 2014 crownedgrouse.com
+@version 0.1.0
+@title Welcome to the edgar module documentation !
+@doc `edgar' is a GNU ar Erlang module
+
+== Preamble ==
+GNU ar is of little use in our time, but unfortunately debian package format is using this archive format...
+This module is a part of a bigger project related to Debian packages.
+
+== Abstract ==
+The goal was to keep the same API than `erl_tar', and code is globally inspired from this `Ericsson AB' module.
+API is almost the same that `erl_tar', except obviously what can't be reproduced due to GNU ar format limitations,
+mainly no symlinks nor directory structure.
+
+== Quality ==
+Common tests are used to insure no regression to API.
+
+== Limitation ==
+
+File addition is missing for the moment, so `erl_tar' equivalent to add/3 add/4 functions are not exported at this time.
+A next version will probably fix this.
