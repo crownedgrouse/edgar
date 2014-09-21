@@ -494,9 +494,9 @@ create_header(Name, #file_info {mode=Mode, uid=Uid, gid=Gid,
 	       % Change long name to index if needed
 	      case get(Name++"/\n") of
 		    undefined 		 -> % Assuming a short name
-					    Name ++ "/" ;
+					    filename:basename(Name) ++ "/" ;
 		    I when is_integer(I) -> "/" ++ integer_to_list(I) ;
-		    _         		 -> Name ++ "/" % should not go here
+		    _         		 -> filename:basename(Name) ++ "/" % should not go here
 	      end
 	  ]),
 	  io_lib:format("~-"++ integer_to_list(?ah_mtime_len) ++"s",[integer_to_list(Mtime)]),
