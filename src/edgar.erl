@@ -751,7 +751,8 @@ get_name(Bin) ->
 					    "//";
 	      ["/", Int] 		-> % Longname offset (/15)
 					    get(list_to_integer(string:strip(Int)));
-	      [Left] 			-> Left
+	      [Left] 			-> Left;
+	      [Left, _]			-> Left
 	   end,
     Name.
 
