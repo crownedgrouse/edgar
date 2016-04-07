@@ -1,7 +1,7 @@
 {application, edgar,
  [
   {description, "Erlang Does Gnu AR"},
-  {vsn, "0.2.0"},
+  {vsn, "1.0.2"},
   {registered, []},
   {applications, [
                   kernel,
