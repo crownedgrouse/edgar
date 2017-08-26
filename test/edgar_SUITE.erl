@@ -11,7 +11,7 @@
 %%% reference files was created with : GNU ar (GNU Binutils for Ubuntu) 2.23.2
 
 
--define(extract(File), 
+-define(extract(File),
     Config = Config_ ++ [{ar_ref, File}],
     F = ?value(ar_ref, Config),
     D = ?value(data_dir, Config),
@@ -19,7 +19,7 @@
     ok = edgar:extract(Ref, [{cwd, ?value(priv_dir, Config)}])
  ).
 
--define(create(File), 
+-define(create(File),
     C = Config_ ++ [{ar_ref, File}],
     F = ?value(ar_ref, C),
     D = ?value(data_dir, C) ,
@@ -35,8 +35,9 @@
     {ok, OrigCwd} = file:get_cwd(),
     file:set_cwd(T),
     List = ?value(files, Config) ,
+    ct:pal("List : ~p",[List]),
     edgar:create(Test, List),
-    file:set_cwd(OrigCwd),  
+    file:set_cwd(OrigCwd),
     % Compare files
     A = file:read_file(Ref),
     B = file:read_file(Test),
@@ -44,7 +45,7 @@
     A = B
   ).
 
--define(add(File), 
+-define(add(File),
     {ok, List } = edgar:table(Ref),
     ct:pal("Ar File list : ~p",[List]),
     % Creating ar archive
@@ -59,7 +60,7 @@
     ok = lists:foreach(fun(Filename) -> ct:pal("~p",[Filename]) end, List),
     ok = lists:foreach(fun(Filename) -> ct:pal("~p",[Filename]), ct:pal("~p", [edgar:add(TestAd, Filename, [write])]) end, List),
     edgar:close(TestAd),
-    file:set_cwd(OrigCwd),  
+    file:set_cwd(OrigCwd),
     % Compare files
     A = file:read_file(Ref),
     B = file:read_file(Test),
@@ -91,7 +92,7 @@
 %groups() ->
 %    [].
 
-all() -> 
+all() ->
     [extract, extract_long, extract_mixte1, create, create_long, create_mixte1]. % TODO add, add_long, add_mixte1
 
 extract(Config_) -> ?extract("ar_ref.ar").
