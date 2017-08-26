@@ -11,3 +11,4 @@ erl_crash.dump
 edoc-info
 *.css
 doc/erlang.png
+local.mk
